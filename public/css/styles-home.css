@@ -1,0 +1,338 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container-home {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== navigation ================ */
+.navigation-home {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: #2a2185;
+  border-left: 10px solid #2a2185;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation-home.active {
+  width: 80px;
+}
+
+.navigation-home ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation-home ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation-home ul li:hover,
+.navigation-home ul li.hovered {
+  background-color: #fff;
+}
+
+.navigation-home ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation-home ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #fff;
+}
+.navigation-home ul li:hover a,
+.navigation-home ul li.hovered a {
+  color: #2a2185;
+}
+
+/* Icon */
+.navigation-home ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+/* Icon KITS */
+.navigation-home ul li a .icon-kits {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.navigation-home ul li a .icon-kits img {
+  /* font-size: 1.75rem; */
+  width: 60px;
+  margin-top: 10px;
+}
+
+.navigation-home ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation-home ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation-home ul li:hover a::before,
+.navigation-home ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px #fff;
+  pointer-events: none;
+}
+.navigation-home ul li:hover a::after,
+.navigation-home ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px #fff;
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main-home {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: #fff;
+  transition: 0.5s;
+}
+.main-home.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar-home {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle-home {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search-home {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search-home label {
+  position: relative;
+  width: 100%;
+}
+
+.search-home label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid #999;
+}
+
+.search-home label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+  /* margin-top: 10px; */
+}
+
+.user-my {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user-my img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: #2a2185;
+}
+
+.cardBox .card .cardName {
+  color: #999;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: #999;
+}
+
+.cardBox .card:hover {
+  background: #2a2185;
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: #fff;
+}
+
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: #2a2185;
+}
+.cardHeader .btn-user {
+  position: relative;
+  padding: 5px 10px;
+  background: #2a2185;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 6px;
+}
+
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation-home {
+    left: -300px;
+  }
+  .navigation-home.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation-home {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation-home.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}

@@ -1,0 +1,74 @@
+/* ================== User Details List ============== */
+.details-user {
+    /* position: relative; */
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    /* grid-template-columns: 2fr 1fr; */
+    /* grid-gap: 30px; */
+}
+
+.details-user .recentOrders {
+    position: relative;
+    /* display: grid; */
+    /* min-height: 500px; */
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.details-user .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.details-user table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+.details-user table thead td {
+    font-weight: 600;
+}
+.details-user .recentOrders table tr {
+    color: #222;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details-user .recentOrders table tr:last-child {
+    border-bottom: none;
+}
+.details-user .recentOrders table tbody tr:hover {
+    background: #2a2185;
+    color: #fff;
+}
+.details-user .recentOrders table tr td {
+    padding: 10px;
+}
+
+.details-user .recentOrders table tr th:last-child {
+    text-align: center;
+}
+
+.details-user .recentOrders table tr td:last-child {
+    text-align: center;
+}
+/* .details-user .recentOrders table tr td:nth-child(2) {
+    text-align: end;
+} */
+/* .details-user .recentOrders table tr td:nth-child(3) {
+    text-align: center;
+} */
+
+@media (max-width: 768px) {
+    .details {
+      grid-template-columns: 1fr;
+    }
+    .recentOrders {
+      overflow-x: auto;
+    }
+    .status.inProgress {
+      white-space: nowrap;
+    }
+  }

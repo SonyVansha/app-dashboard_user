@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="/assets/css/styles-user.css">
+    <link rel="stylesheet" href="/assets/css/style-userdash.css">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container-user">
+        <div class="navigation-user">
+            <ul>
+                <li>
+                    <a href="/assets/img/kits.png">
+                        <span class="icon-kits">
+                            {{!-- <ion-icon name="logo-apple"></ion-icon> --}}
+                            <img src="/assets/img/kits.png" alt="kits" class="profile-kits">
+                        </span>
+                        <span class="title">Komunitas IT</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/logout">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main-user">
+            <div class="topbar-user">
+                <div class="toggle-user">
+                    {{!-- <ion-icon name="menu-outline"></ion-icon> --}}
+                </div>
+                <div class="search-user">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                <div class="user-my">
+                    <img src="assets/imgs/customer01.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details-user">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>User Data Login Client</h2>
+                        <button class="btn-user add-btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add data</button>
+                    </div>
+                    <table id="editableTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each admin}}
+                                <tr>
+                                    <td>{{id}}</td>
+                                    <td>{{username}}</td>
+                                    <td>{{email}}</td>
+                                    <td>{{password}}</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{id}}">Delete</a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Product Modal -->
+    <form action="/user" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New User Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Delete Product Modal -->
+    <form action="/remove" method="post">
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Delete User Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <strong>Are You Sure To Delete This Data?</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" class="form-control id2" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <script src="/assets/js/jquery-3.3.1.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <!-- =========== Scripts =========  -->
+    <script src="/assets/js/sequentialNumber.js"></script>
+    {{!-- <script src="/assets/js/main.js"></script> --}}
+
+    <script>
+        $(document).ready(function () {
+            // Menampilkan data pada modal untuk edit record
+            $('#editableTable').on('click', '.edit', function () {
+                var id = $(this).data('id');
+                var username = $(this).data('username');
+                var email = $(this).data('email');
+                var password = $(this).data('password');
+                $('#EditModal').modal('show');
+                $('.username').val(username);
+                $('.email').val(email);
+                $('.id').val(id);
+                $('.password').val(password);
+            });
+
+            // Menampilkan modal untuk menghapus record
+            $('#editableTable').on('click', '.delete', function () {
+                var id = $(this).data('id');
+                $('#DeleteModal').modal('show');
+                $('.id2').val(id);
+            });
+
+        });
+    </script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
