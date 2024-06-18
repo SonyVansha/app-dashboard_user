@@ -13,10 +13,10 @@ This Web from  Device, you must be set from the database SQL for mariadb.
 
 # Envinronment Variable
 Setting the environment variable on your path application, use the name .env, and set the variable name on the instruction below:<br/>
-`DB_HOST=YOUR_ENDPOINT`
-`DB_USER=YOUR_USER`
-`DB_PASS=YOUR_PASSWORD_DATABASE`
-`DB_NAME=YOUR_NAME_DATABASE`
+`DB_HOST=YOUR_ENDPOINT`<br>
+`DB_USER=YOUR_USER`<br>
+`DB_PASS=YOUR_PASSWORD_DATABASE`<br>
+`DB_NAME=YOUR_NAME_DATABASE`<br>
 
 # Command run application
 `npm run start`
