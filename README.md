@@ -3,6 +3,16 @@
 # Web Login and Signup
 This Web from  Device, you must be set from the database SQL for mariadb.
 
+# Setup Database MariaDB Local
+To set the user and password on the database, use the command in the instructions below:
+setting the user
+```
+CREATE DATABASE data_ukt;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin123';
+GRANT ALL PRIVILEGES ON nama_database.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+```
+
 # Application
 ## Install nodejs
 `curl -fsSL https://rpm.nodesource.com/setup_21.x | sudo bash -`<br/>
